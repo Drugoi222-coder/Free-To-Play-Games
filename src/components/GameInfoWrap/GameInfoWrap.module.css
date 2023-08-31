@@ -1,0 +1,11 @@
+.wrap {
+    padding: 0 10vw 50px 10vw;
+    display: block;
+}
+
+
+@media (max-width: 1599px) {
+    .wrap {
+        padding: 0 5vw 50px 5vw;
+    }
+}

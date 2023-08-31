@@ -1,0 +1,14 @@
+.gameList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pagination {
+    padding: 40px 0px;
+    width: 275px;
+    margin: 0 auto;
+}
+
+.firstRowSpace {
+    width: 100%;
+}

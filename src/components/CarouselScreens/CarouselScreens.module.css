@@ -1,0 +1,19 @@
+.slider {
+    width: 70%;
+}
+
+.img {
+    height: 75%;
+    width: 100%;
+}
+
+.carousel {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@media (max-width: 992px) {
+    .slider {
+        width: 100%;
+    }
+}

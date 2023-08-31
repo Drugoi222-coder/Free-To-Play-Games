@@ -1,0 +1,23 @@
+@media (max-width: 1200px) {
+    .cardGame {
+        width: 320px;
+    }
+}
+
+@media (max-width: 992px) {
+    .cardGame {
+        width: 400px;
+    }
+}
+
+@media (max-width: 767px) {
+    .cardGame {
+        width: 280px;
+    }
+}
+
+@media (max-width: 575px) {
+    .cardGame {
+        width: 200px;
+    }
+}

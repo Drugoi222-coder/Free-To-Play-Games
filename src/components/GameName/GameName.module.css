@@ -1,0 +1,13 @@
+.text {
+    font-size: 22px;
+    color: #adb2b4;
+}
+
+@media (max-width: 575px) {
+    .title {
+        font-size: 28px !important;
+    }
+    .text {
+        font-size: 18px;
+    }
+}

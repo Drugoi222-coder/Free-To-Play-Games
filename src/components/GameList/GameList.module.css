@@ -1,0 +1,16 @@
+.spin {
+    width: 50px;
+    margin: 0 auto;
+    display: block;
+    padding-top: 100px;
+}
+
+.gameList {
+    padding: 0px 35px;
+}
+
+@media (max-width: 575px) {
+    .gameList {
+        padding: 0 5px;
+    }
+}
