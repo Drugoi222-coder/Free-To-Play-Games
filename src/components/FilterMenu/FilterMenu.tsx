@@ -11,11 +11,23 @@ const FilterMenu = () => {
     const params = useFilterParams();
 
     const onSubmitParams = (urlKey: urlKeyTypes) => () => {
-        const newParams: IParams = { ...params, urlKey };
+        const newParams: IParams = { ...params };
         if (typeof newParams.tag === "object") {
             newParams.tag = newParams.tag.join(".").trim();
         }
-        dispatch(fetchGameList(newParams));
+        const isParamsNotEmpty = Object.values(newParams).some(
+            (item) => item ? item.length > 0 : false
+        );
+        if (!isParamsNotEmpty) {
+            dispatch(fetchGameList({ urlKey: "games" }));
+        } else {
+            const params = Object.values(newParams).filter((item) => item && item.length > 0 ? item : false);
+            if (params.length === 1) {
+                dispatch(fetchGameList({ ...newParams, urlKey: "games" }));
+            } else {
+                dispatch(fetchGameList({ ...newParams, urlKey }));
+            }
+        }
     };
 
     const onDeselectAll = () => {
@@ -26,8 +38,7 @@ const FilterMenu = () => {
                 "sort-by": undefined,
             })
         );
-        onSubmitParams("games")();
-    }
+    };
 
     return (
         <div className={styles.menu}>
@@ -43,10 +54,18 @@ const FilterMenu = () => {
                 text="Сортировать по:"
             />
             <Space className={styles.buttonWrap} wrap>
-                <Button className={styles.button} onClick={onSubmitParams("filter")} type="primary">
+                <Button
+                    className={styles.button}
+                    onClick={onSubmitParams("filter")}
+                    type="primary"
+                >
                     Применить
                 </Button>
-                <Button className={styles.button} onClick={onDeselectAll} type="default">
+                <Button
+                    className={styles.button}
+                    onClick={onDeselectAll}
+                    type="default"
+                >
                     Сбросить
                 </Button>
             </Space>

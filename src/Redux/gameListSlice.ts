@@ -11,9 +11,10 @@ import { getRequestOptions } from "../utils/functions";
 
 export const fetchGameList = createAsyncThunk<GameInfo[], IParams>(
     "gameListSlice/fetchGameList",
-    async (params) => {
-        const options = getRequestOptions(params);
+    async ({urlKey, ...args}) => {
+        const options = getRequestOptions(args, urlKey!);
         const response = await axios.request(options);
+
         if (response.data.status === 0) {
             throw new Error("Нет игр по вашему запросу!");
         }

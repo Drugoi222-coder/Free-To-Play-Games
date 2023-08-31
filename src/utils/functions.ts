@@ -1,15 +1,10 @@
-import { GameMoreInfo, IParams } from "../Types/types";
+import { GameMoreInfo, IParams, urlKeyTypes } from "../Types/types";
 import axios from "axios";
 
-export const getRequestOptions = (params: IParams) => ({
+export const getRequestOptions = (params: IParams, urlKey: urlKeyTypes) => ({
     method: "GET",
-    url: `https://free-to-play-games-database.p.rapidapi.com/api/${params.urlKey}`,
-    params: {
-        platform: params.platform,
-        tag: params.tag,
-        "sort-by": params["sort-by"],
-        id: params.id,
-    },
+    url: `https://free-to-play-games-database.p.rapidapi.com/api/${urlKey}`,
+    params,
     headers: {
         "X-RapidAPI-Key": "f39f7848b6msh11371fb1602021fp1fb361jsn576073994924",
         "X-RapidAPI-Host": "free-to-play-games-database.p.rapidapi.com",
@@ -33,14 +28,13 @@ export const setItemStorage = (data: GameMoreInfo) => {
     };
 
     sessionStorage.setItem(String(data.id), JSON.stringify(storageItem));
-}
+};
 
 export const fetchExactGame = async (id: string) => {
     const options = getRequestOptions({
-        urlKey: "game",
-        id,
-    });
+        id
+    }, "game");
     const res = await axios.request<GameMoreInfo>(options);
-    
+
     return res.data;
-}
+};
