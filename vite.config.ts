@@ -7,5 +7,4 @@ export default defineConfig({
   server: {
     port: 3001,
   },
-  base: "https://Drugoi222-coder.github.io/Free-To-Play-Games/"
 });
